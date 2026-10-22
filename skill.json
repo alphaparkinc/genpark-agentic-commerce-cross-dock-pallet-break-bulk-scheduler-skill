@@ -1,0 +1,67 @@
+{
+  "name": "genpark-agentic-commerce-cross-dock-pallet-break-bulk-scheduler-skill",
+  "version": "1.0.0",
+  "title": "Cross-Dock Pallet Break-Bulk & Dwell Time Minimizer Skill",
+  "description": "Inbound truck door arrival to outbound bay cross-dock dwell time minimization, break-bulk pallet sortation, and zero-buffer staging scheduler. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "cross-docking",
+    "break-bulk",
+    "pallet-sortation",
+    "warehouse-operations",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "schedule_cross_dock_direct_transfer",
+      "description": "Map inbound pallets directly to waiting outbound linehaul trailers to bypass racking put-away costs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "inbound_pallets": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "outbound_doors": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "inbound_pallets",
+          "outbound_doors"
+        ]
+      }
+    },
+    {
+      "name": "audit_cross_dock_dwell_time_efficiency",
+      "description": "Calculate average staging dwell time and forklift transit savings vs conventional warehousing.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "pallet_count": {
+            "type": "integer"
+          },
+          "avg_dwell_minutes": {
+            "type": "number"
+          },
+          "standard_putaway_cost_per_pallet_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "pallet_count",
+          "avg_dwell_minutes"
+        ]
+      }
+    }
+  ]
+}
